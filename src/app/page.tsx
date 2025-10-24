@@ -1,103 +1,174 @@
-import Image from "next/image";
+"use client";
+
+import HeaderMain from "@/components/HeaderMain";
+import Footer from "@/components/Footer";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <main className="min-h-screen bg-gray-50 text-gray-800">
+      {/* HEADER */}
+      <HeaderMain />
+
+      {/* Section Hero */}
+      <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 px-8 md:px-16 py-24">
+        {/* Texte d'accroche */}
+        <div>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+            Crée ton offre pro en{" "}
+            <span className="text-sky-500">5 minutes</span>.<br />
+            Sans galérer sur le texte ni le design.
+          </h1>
+
+          <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+            Proposia t’aide à formuler, structurer et présenter ton offre
+            professionnelle grâce à l’intelligence artificielle. Simple, rapide,
+            efficace.
+          </p>
+
+          {/* Bouton principal */}
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 8px 25px rgba(56, 189, 248, 0.3)",
+              backgroundColor: "#0284c7",
+            }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => router.push("/create")}
+            className="px-8 py-4 bg-sky-600 text-white font-semibold rounded-full shadow-md transition flex items-center gap-2 cursor-pointer"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            🚀 Je crée mon offre maintenant
+          </motion.button>
+
+          <p className="text-gray-400 text-sm mt-4">
+            Déjà +200 freelances ont clarifié leur offre avec Proposia.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Exemple d'offre générée */}
+        <div className="hidden md:flex justify-center">
+          <article className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 max-w-md space-y-5">
+            <h3 className="text-lg font-bold text-sky-700">
+              💼 Création de sites vitrines pour indépendants
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              Pour les <strong>coachs et thérapeutes débutants</strong> qui
+              veulent renforcer leur crédibilité, gagner du temps et attirer
+              plus de clients grâce à un site pro et sur mesure.
+            </p>
+            <div>
+              <h4 className="text-sm font-semibold text-gray-800 mb-1">
+                ❌ Le problème
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Beaucoup peinent à se faire connaître et à dégager une image
+                pro. Résultat : peu de clients, peu de confiance.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-gray-800 mb-1">
+                ✅ La solution
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Je crée pour vous un site vitrine moderne, clair et optimisé
+                pour convertir vos visiteurs en clients.
+              </p>
+            </div>
+            <ul className="space-y-1 text-sm text-gray-700">
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-sky-500" /> Crédibilité
+                renforcée
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-sky-500" /> Gain de temps
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-sky-500" /> Plus de clients
+              </li>
+            </ul>
+            <div className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-center rounded-xl py-3 mt-4">
+              <p className="text-sm font-semibold">
+                🚀 Prêt à booster ton activité ?
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/*Section "Comment ça marche ?" */}
+      <section className="py-24 bg-white">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Comment ça marche ?
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-8 md:px-16 text-center">
+          {[
+            {
+              icon: "✍️",
+              title: "1. Remplis 5 questions",
+              text: "Décris ton activité, ton public et ton offre en quelques phrases.",
+            },
+            {
+              icon: "⚙️",
+              title: "2. L’IA rédige ton offre",
+              text: "Proposia te génère automatiquement un texte clair, convaincant et professionnel.",
+            },
+            {
+              icon: "🚀",
+              title: "3. Télécharge ton offre",
+              text: "Obtiens ton offre prête à partager à tes clients ou à publier sur ton site.",
+            },
+          ].map((step, i) => (
+            <motion.div
+              key={i}
+              whileHover={{
+                scale: 1.05,
+                y: -5,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 transition"
+            >
+              <div className="text-sky-500 text-4xl mb-4">{step.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+              <p className="text-gray-600">{step.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section Call To Action final */}
+      <section className="py-24 bg-gradient-to-r from-sky-500 to-indigo-500 text-center text-white">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Prêt à clarifier ton offre ?
+        </h2>
+        <p className="text-lg mb-8 text-sky-100">
+          Commence gratuitement dès maintenant.
+        </p>
+
+        <div className="flex justify-center">
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 8px 25px rgba(255,255,255,0.4)",
+              backgroundColor: "#ffffff",
+              color: "#0369a1",
+            }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => router.push("/create")}
+            className="px-10 py-4 bg-white text-sky-600 font-semibold rounded-full shadow-md transition flex items-center gap-2 cursor-pointer"
+          >
+            ✍️ Créer mon offre
+          </motion.button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </main>
   );
 }
