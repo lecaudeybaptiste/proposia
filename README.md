@@ -109,6 +109,10 @@ Le site sera ensuite accessible sur :
 🎬 **Vidéo YouTube (non répertoriée)** :
 👉 [(https://youtu.be/Au1oR4rwv6g)]
 
+## Github
+
+🔗 **Lien du repository GitHub :** [https://github.com/lecaudeybaptiste/proposia]
+
 ## 👤 Auteur
 
 **Baptiste Lecaudey**
